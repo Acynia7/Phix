@@ -1,0 +1,52 @@
+2024-10-01T08:20:05.233Z
+Error: connect ECONNREFUSED 127.0.0.1:3306
+    at createConnection (/usr/lib/node_modules/@dbml/cli/node_modules/mysql2/promise.js:253:31)
+    at connectMySQL (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:8:57)
+    at fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:366:26)
+    at Object.fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/connector.js:16:57)
+    at connectionHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/connector.js:24:51)
+    at Object.db2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:62:26)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/db2dbml.js:4:19)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1691:10)
+    at Module.load (node:internal/modules/cjs/loader:1317:32)
+
+2024-10-01T08:20:53.259Z
+Error: connect ECONNREFUSED 127.0.0.1:60843
+    at createConnection (/usr/lib/node_modules/@dbml/cli/node_modules/mysql2/promise.js:253:31)
+    at connectMySQL (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:8:57)
+    at fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:366:26)
+    at Object.fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/connector.js:16:57)
+    at connectionHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/connector.js:24:51)
+    at Object.db2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:62:26)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/db2dbml.js:4:19)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1691:10)
+    at Module.load (node:internal/modules/cjs/loader:1317:32)
+
+2024-10-01T08:21:06.621Z
+TypeError: Invalid URL
+    at new URL (node:internal/url:816:29)
+    at ConnectionConfig.parseUrl (/usr/lib/node_modules/@dbml/cli/node_modules/mysql2/lib/connection_config.js:263:23)
+    at new ConnectionConfig (/usr/lib/node_modules/@dbml/cli/node_modules/mysql2/lib/connection_config.js:75:34)
+    at exports.createConnection (/usr/lib/node_modules/@dbml/cli/node_modules/mysql2/index.js:10:35)
+    at createConnection (/usr/lib/node_modules/@dbml/cli/node_modules/mysql2/promise.js:252:31)
+    at connectMySQL (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:8:57)
+    at fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:366:26)
+    at Object.fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/connector.js:16:57)
+    at connectionHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/connector.js:24:51)
+    at Object.db2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:62:26)
+
+2024-10-01T08:22:23.604Z
+Error: connect ECONNREFUSED 127.0.0.1:60843
+    at createConnection (/usr/lib/node_modules/@dbml/cli/node_modules/mysql2/promise.js:253:31)
+    at connectMySQL (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:8:57)
+    at fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/mysqlConnector.js:366:26)
+    at Object.fetchSchemaJson (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/connector/dist/connectors/connector.js:16:57)
+    at connectionHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/connector.js:24:51)
+    at Object.db2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:62:26)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/db2dbml.js:4:19)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1691:10)
+    at Module.load (node:internal/modules/cjs/loader:1317:32)
+

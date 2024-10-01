@@ -22,6 +22,12 @@ class ParticipantAnswer
     #[ORM\Column]
     private ?\DateTimeImmutable $answer_date = null;
 
+    #[ORM\ManyToOne(inversedBy: 'participantAnswers')]
+    private ?Answer $answer = null;
+
+    #[ORM\ManyToOne(inversedBy: 'participantAnswers')]
+    private ?Participant $participation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +65,30 @@ class ParticipantAnswer
     public function setAnswerDate(\DateTimeImmutable $answer_date): static
     {
         $this->answer_date = $answer_date;
+
+        return $this;
+    }
+
+    public function getAnswer(): ?Answer
+    {
+        return $this->answer;
+    }
+
+    public function setAnswer(?Answer $answer): static
+    {
+        $this->answer = $answer;
+
+        return $this;
+    }
+
+    public function getParticipation(): ?Participant
+    {
+        return $this->participation;
+    }
+
+    public function setParticipation(?Participant $participation): static
+    {
+        $this->participation = $participation;
 
         return $this;
     }

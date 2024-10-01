@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SessionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SessionRepository::class)]
@@ -22,8 +24,24 @@ class Session
     #[ORM\Column]
     private ?\DateTimeImmutable $date_end = null;
 
-    #[ORM\Column]
-    private ?int $state = null;
+
+    /**
+     * @var Collection<int, Participant>
+     */
+    #[ORM\ManyToMany(targetEntity: Participant::class, mappedBy: 'session')]
+    private Collection $participants;
+
+    #[ORM\ManyToOne(inversedBy: 'sessions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Quiz $quiz = null;
+
+    #[ORM\ManyToOne(inversedBy: 'session')]
+    private ?SessionState $sessionState = null;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -66,14 +84,53 @@ class Session
         return $this;
     }
 
-    public function getState(): ?int
+    /**
+     * @return Collection<int, Participant>
+     */
+    public function getParticipants(): Collection
     {
-        return $this->state;
+        return $this->participants;
     }
 
-    public function setState(int $state): static
+    public function addParticipant(Participant $participant): static
     {
-        $this->state = $state;
+        if (!$this->participants->contains($participant)) {
+            $this->participants->add($participant);
+            $participant->addSession($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): static
+    {
+        if ($this->participants->removeElement($participant)) {
+            $participant->removeSession($this);
+        }
+
+        return $this;
+    }
+
+    public function getQuiz(): ?Quiz
+    {
+        return $this->quiz;
+    }
+
+    public function setQuiz(?Quiz $quiz): static
+    {
+        $this->quiz = $quiz;
+
+        return $this;
+    }
+
+    public function getSessionState(): ?SessionState
+    {
+        return $this->sessionState;
+    }
+
+    public function setSessionState(?SessionState $sessionState): static
+    {
+        $this->sessionState = $sessionState;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnswerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AnswerRepository::class)]
@@ -24,6 +26,21 @@ class Answer
 
     #[ORM\Column]
     private ?bool $active = null;
+
+    #[ORM\ManyToOne(inversedBy: 'answers')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Question $question = null;
+
+    /**
+     * @var Collection<int, ParticipantAnswer>
+     */
+    #[ORM\OneToMany(targetEntity: ParticipantAnswer::class, mappedBy: 'answer')]
+    private Collection $participantAnswers;
+
+    public function __construct()
+    {
+        $this->participantAnswers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +91,48 @@ class Answer
     public function setActive(bool $active): static
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getQuestion(): ?Question
+    {
+        return $this->question;
+    }
+
+    public function setQuestion(?Question $question): static
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ParticipantAnswer>
+     */
+    public function getParticipantAnswers(): Collection
+    {
+        return $this->participantAnswers;
+    }
+
+    public function addParticipantAnswer(ParticipantAnswer $participantAnswer): static
+    {
+        if (!$this->participantAnswers->contains($participantAnswer)) {
+            $this->participantAnswers->add($participantAnswer);
+            $participantAnswer->setAnswer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipantAnswer(ParticipantAnswer $participantAnswer): static
+    {
+        if ($this->participantAnswers->removeElement($participantAnswer)) {
+            // set the owning side to null (unless already changed)
+            if ($participantAnswer->getAnswer() === $this) {
+                $participantAnswer->setAnswer(null);
+            }
+        }
 
         return $this;
     }
