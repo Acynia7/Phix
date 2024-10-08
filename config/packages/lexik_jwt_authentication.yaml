@@ -8,3 +8,4 @@ lexik_jwt_authentication:
         check_path: /auth
         username_path: login
         password_path: password
+ 
