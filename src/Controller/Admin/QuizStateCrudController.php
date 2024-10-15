@@ -39,6 +39,7 @@ class QuizStateCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield AssociationField::new('quizzes');
-        yield IdField::new('id');
+        yield IdField::new('id')->hideOnForm();
+        yield TextField::new('state');
     }
 }
