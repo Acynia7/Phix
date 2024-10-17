@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Question;
 use App\Entity\Quiz;
 use App\Entity\Answer;
-use App\Form\QuizCreationFormType;
+use App\Form\QuizFormType;
 use App\Repository\QuizRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +24,7 @@ class QuizController extends AbstractController
             $question = new Question();
             $quiz->addQuestion($question);
         }
-        $form = $this->createForm(QuizCreationFormType::class, $quiz);
+        $form = $this->createForm(QuizFormType::class, $quiz);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

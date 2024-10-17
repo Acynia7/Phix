@@ -17,9 +17,6 @@ class QuestionFormType extends AbstractType
             ->add('type')
             ->add('text')
             ->add('chrono')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('active')
             // ->add('quiz', EntityType::class, [
             //     'class' => Quiz::class,

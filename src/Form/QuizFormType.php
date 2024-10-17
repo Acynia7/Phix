@@ -12,15 +12,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 
-class QuizCreationFormType extends AbstractType
+class QuizFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('title')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('state', EntityType::class, [
                 'class' => QuizState::class,
                 'choice_label' => 'state',

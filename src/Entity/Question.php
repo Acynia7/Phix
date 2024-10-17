@@ -24,7 +24,7 @@ class Question
     #[ORM\Column(nullable: true)]
     private ?int $chrono = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
