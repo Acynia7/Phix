@@ -25,9 +25,21 @@ class QuizFormType extends AbstractType
             ->add('questions', LiveCollectionType::class, [
                 'entry_type' => QuestionFormType::class,
                 'entry_options' => ['label' => false],
-                'label' => false,
+                'label' => 'Questions',
                 'allow_add' => true,
+                'button_add_options' => [
+                    'label' => 'Add question',
+                    'attr' => [
+                        'class' => 'btn btn-outline-primary',
+                    ],
+                ],
                 'allow_delete' => true,
+                'button_delete_options' => [
+                    'label' => 'Delete question',
+                    'attr' => [
+                        'class' => 'btn btn-outline-danger',
+                    ],
+                ],
                 'by_reference' => false,
             ])
         ;

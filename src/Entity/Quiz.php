@@ -24,8 +24,8 @@ class Quiz
     #[ORM\Column(nullable: true)]
     private ?int $nb_question = null;
 
-    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\ManyToOne(inversedBy: 'quizzes')]
     private ?User $user = null;
@@ -50,6 +50,7 @@ class Quiz
     {
         $this->questions = new ArrayCollection();
         $this->sessions = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable("now");
     }
 
     public function getId(): ?int

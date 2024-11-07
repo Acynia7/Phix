@@ -29,11 +29,9 @@ class QuizController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $QuizRepository->add($form->getData(), true);
-            $this->addFlash('Excellent! With this quiz, I will learn so much new stuff.');
+            //$this->addFlash('Excellent! With this quiz, I will learn so much new stuff.');
 
-            return $this->redirectToRoute('app_quiz', [
-                'id' => $quiz->getId(),
-            ]);
+            return $this->redirectToRoute('app_quiz');
         }
 
         return $this->render('quiz/index.html.twig', [

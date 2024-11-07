@@ -21,8 +21,8 @@ class Answer
     #[ORM\Column]
     private ?bool $correct = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column]
     private ?bool $active = null;
@@ -40,6 +40,12 @@ class Answer
     public function __construct()
     {
         $this->participantAnswers = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable("now");
+    }
+
+    public function __toString(): string
+    {
+        return $this->getText();
     }
 
     public function getId(): ?int

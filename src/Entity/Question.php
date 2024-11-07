@@ -24,8 +24,8 @@ class Question
     #[ORM\Column(nullable: true)]
     private ?int $chrono = null;
 
-    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column]
     private ?bool $active = null;
@@ -37,12 +37,13 @@ class Question
     /**
      * @var Collection<int, Answer>
      */
-    #[ORM\OneToMany(targetEntity: Answer::class, mappedBy: 'question')]
+    #[ORM\OneToMany(targetEntity: Answer::class, mappedBy: 'question', cascade: ['persist'])]
     private Collection $answers;
 
     public function __construct()
     {
         $this->answers = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable("now");
     }
 
     public function getId(): ?int

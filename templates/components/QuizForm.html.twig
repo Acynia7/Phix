@@ -3,8 +3,10 @@
 
 <h1>Quiz</h1>
     {{ form_start(form) }}
-    {{ form_widget(form.questions.vars.button_add, {label: '+ Add Item', attr: {class: 'btn btn-outline-primary'} } ) }}
-    <button type="submit" class="btn btn-success" formnovalidate="">Send</button>
+    {{ form_row(form.title)}}
+    {{ form_widget(form.questions.vars.button_add) }}
     {{ form_end(form) }}
+
+    <button type="submit" class="btn btn-success" formnovalidate="">Send</button>
 
 </div>
