@@ -1,12 +1,12 @@
-<div {{attributes}} >
-
+<div {{attributes}}>
 
 <h1>Quiz</h1>
     {{ form_start(form) }}
     {{ form_row(form.title)}}
-    {{ form_widget(form.questions.vars.button_add) }}
-    {{ form_end(form) }}
-
+    {{ form_row(form.state)}}
+    {{ form_row(form.questions)}}
+    {#{{ form_widget(form.questions.vars.button_add) }}#}
     <button type="submit" class="btn btn-success" formnovalidate="">Send</button>
+    {{ form_end(form) }}
 
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\QuizRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -17,9 +18,19 @@ class HomeController extends AbstractController
     }
 
     #[Route('/quizzes', name: 'app_quizzes')]
-    public function quizzes(): Response
+    public function quizzes(QuizRepository $quizRepository): Response
     {
+        $quizzes = $quizRepository->findAll();
+
         return $this->render('home/quizzes.html.twig', [
+            'quizzes' => $quizzes,
+        ]);
+    }
+
+    #[Route('/play', name: 'app_join')]
+    public function play(): Response
+    {
+        return $this->render('home/play.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
