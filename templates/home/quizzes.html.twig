@@ -20,7 +20,7 @@
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">{{ quiz.title }}</h5>
+                                <a href="{{ path('app_show', {'id': quiz.id}) }}" class="card-title">{{ quiz.title }}</a>
                                 <p class="card-text">
                                     État: {{ quiz.state.state }}<br>
                                     Nombre de questions: {{ quiz.questions|length }}

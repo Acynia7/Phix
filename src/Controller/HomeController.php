@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Question;
 use App\Repository\QuizRepository;
+use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -24,6 +26,23 @@ class HomeController extends AbstractController
 
         return $this->render('home/quizzes.html.twig', [
             'quizzes' => $quizzes,
+        ]);
+    }
+
+    #[Route('/show/{id}', name: 'app_show')]
+    public function show(int $id, QuizRepository $quizRepository, QuestionRepository $questionRepository): Response
+    {
+        $quiz = $quizRepository->show($id);
+
+        if (!$quiz) {
+            return $this->render('error/404.html.twig');
+        }
+
+        $questions = $quiz->getQuestions();
+
+        return $this->render('quiz/show.html.twig', [
+            'quiz' => $quiz,
+            'questions' => $questions,
         ]);
     }
 

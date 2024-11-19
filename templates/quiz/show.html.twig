@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Info{% endblock %}
+
+{% block body %}
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>Info</h3>
+</div>
+
+<div>
+    <h1>{{ quiz.title }}</h1>
+    <ul>
+        {% for question in questions %}
+            <li>{{ question.text }}</li>
+            {% endfor %}
+    </ul>
+</div>
+{% endblock %}

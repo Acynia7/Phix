@@ -33,4 +33,15 @@ class QuizRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function show(int $id): ?Quiz
+    {
+        $quiz = $this->find($id);
+
+        if (!$quiz) {
+            return null;
+        }
+
+        return $quiz;
+    }
 }
