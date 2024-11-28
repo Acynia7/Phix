@@ -210,6 +210,14 @@ h3 {
   background-image: url(../img/background-img/bg-img-3.jpg);
 }
 
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
 /* line 140, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_reset.scss */
 .overlay {
   position: relative;
@@ -2031,6 +2039,10 @@ h3 {
   }
 }
 
+.modal-backdrop {
+  z-index: 1000 !important;
+}
+
 /* line 109, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_bradcam.scss */
 .popup_box input {
   width: 100%;
@@ -2049,12 +2061,13 @@ h3 {
 
 /* line 121, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_bradcam.scss */
 .popup_box {
-  background: #4B38D2;
+  background: #b7b1e4;
   display: inline-block;
   width: 558px;
   padding: 60px 40px;
   border-radius: 5px;
   z-index: 9;
+  font-size: 25px;
 }
 
 @media (max-width: 767px) {
@@ -2088,9 +2101,8 @@ h3 {
 /* line 146, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_bradcam.scss */
 .popup_box h3 {
   font-size: 24px;
-  color: #fff;
-  margin-bottom: 30px;
-  text-align: left;
+  color: #000000;
+  text-align: center;
 }
 
 @media (max-width: 767px) {

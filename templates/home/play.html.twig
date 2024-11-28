@@ -7,11 +7,13 @@
     <h3>Jouer</h3>
 </div>
 
-<div>
+<div class="box">
     <h1 class="h3 mb-3 font-weight-normal">Code Phix</h1>
     
-    <input class="pin" name="gameId" placeholder="Code PIN du jeu&nbsp;" inputmode="numeric" aria-invalid="false" id="game-input" autocomplete="off" dir="auto" value="">
-    <button class="validate" type="submit"> Valider </button>
+    <form method="post">
+        <input class="pin" name="gameId" placeholder="Code PIN du jeu&nbsp;" inputmode="numeric" aria-invalid="false" id="game-input" autocomplete="off" dir="auto" value="">
+        <button class="btn btn-success" type="submit"> Valider </button>
+    </form>
 </div>
 
 {% endblock %}

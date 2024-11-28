@@ -17,13 +17,13 @@ class QuestionFormType extends AbstractType
     {
         $builder
             ->add('text')
-            ->add('type', ChoiceType::class, [
-            'choices' => [
-            'Vrai/Faux' => 1,
-            'Réponse unique' => 2,
-            'QCM' => 3,
-            ],
-            ])
+            // ->add('type', ChoiceType::class, [
+            // 'choices' => [
+            // 'Vrai/Faux' => 1,
+            // 'Réponse unique' => 2,
+            // 'QCM' => 3,
+            // ],
+            // ])
             ->add('chrono')
             ->add('active')
             ->add('answers', LiveCollectionType::class, [

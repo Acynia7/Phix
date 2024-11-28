@@ -13,6 +13,10 @@
     {% endif %}
 </div>
 
-<twig:QuizForm :form="form_quiz" :quiz="quiz" />
+{% if is_granted('ROLE_USER') %}
+    <div class="box">
+        <twig:QuizForm :form="form_quiz" :quiz="quiz"/>
+    </div>
+{% endif %}
 
 {% endblock %}

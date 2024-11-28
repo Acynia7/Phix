@@ -1,11 +1,24 @@
-<div {{attributes}}>
+<div {{ attributes }}>
 
-<h1>Quiz</h1>
+    <h1>Quiz</h1>
     {{ form_start(form) }}
-    {{ form_row(form.title)}}
-    {{ form_row(form.state)}}
-    {{ form_row(form.questions)}}
-    {#{{ form_widget(form.questions.vars.button_add) }}#}
+
+    <div class="mb-3">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.state) }}
+        {{ form_widget(form.state) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.questions) }}
+        {{ form_widget(form.questions) }}
+        {#{{ form_widget(form.questions.vars.button_add) }}#}
+    </div>
+
     <button type="submit" class="btn btn-success" formnovalidate="">Send</button>
     {{ form_end(form) }}
 
