@@ -30,3 +30,5 @@
 ###< lexik/jwt-authentication-bundle ###
 
 /design/tabler-v1.0.0-beta20
+
+/frankenphp/Caddyfile
