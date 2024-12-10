@@ -39,10 +39,14 @@ class HomeController extends AbstractController
         }
 
         $questions = $quiz->getQuestions();
+        $currentTimeMillis = round(microtime(true) * 1000);
+        $lastThreeDigits = substr($currentTimeMillis, -3);
 
         return $this->render('quiz/show.html.twig', [
             'quiz' => $quiz,
             'questions' => $questions,
+            'quizId' => $id,
+            'lastThreeDigits' => $lastThreeDigits,
         ]);
     }
 
