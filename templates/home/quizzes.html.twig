@@ -16,11 +16,10 @@
         <div class="row">
             {% for quiz in quizzes %}
                 {# Vérifie si l'état du quiz est égal à 5 avant de l'afficher #}
-                {% if quiz.state.state == 'Actif' %}
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <a href="{{ path('app_show', {'id': quiz.id}) }}" class="card-title">{{ quiz.title }}</a>
+                                <a href="{{ path('app_show', {'quiz': quiz.id}) }}" class="card-title">{{ quiz.title }}</a>
                                 <p class="card-text">
                                     État: {{ quiz.state.state }}<br>
                                     Nombre de questions: {{ quiz.questions|length }}
@@ -28,7 +27,6 @@
                             </div>
                         </div>
                     </div>
-                {% endif %}
             {% endfor %}
         </div>
     {% endif %}

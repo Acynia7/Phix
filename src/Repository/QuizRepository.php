@@ -34,14 +34,15 @@ class QuizRepository extends ServiceEntityRepository
         }
     }
 
-    public function show(int $id): ?Quiz
+    public function generateCode(Quiz $quiz): ?string
     {
-        $quiz = $this->find($id);
-
         if (!$quiz) {
             return null;
         }
 
-        return $quiz;
+        $currentTimeMillis = round(microtime(true) * 1000);
+        $lastThreeDigits = substr($currentTimeMillis, -3);
+
+        return $lastThreeDigits;
     }
 }

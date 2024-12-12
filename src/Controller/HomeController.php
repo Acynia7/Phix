@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Session;
+use App\Repository\SessionRepository;
 use App\Entity\Question;
+use App\Entity\Quiz;
 use App\Repository\QuizRepository;
 use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,23 +32,29 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/show/{id}', name: 'app_show')]
-    public function show(int $id, QuizRepository $quizRepository, QuestionRepository $questionRepository): Response
-    {
-        $quiz = $quizRepository->show($id);
+    public function __construct(private SessionRepository $sessionRepository) {}
 
+    #[Route('/show/{quiz<\d+>}', name: 'app_show')]
+    public function show(#[MapEntity(expr: 'repository.find(quiz)')] Quiz $quiz, QuizRepository $quizRepository, QuestionRepository $questionRepository): Response
+    {
         if (!$quiz) {
             return $this->render('error/404.html.twig');
         }
 
         $questions = $quiz->getQuestions();
-        $currentTimeMillis = round(microtime(true) * 1000);
-        $lastThreeDigits = substr($currentTimeMillis, -3);
+        $lastThreeDigits = $quizRepository->generateCode($quiz);
+
+        $session = new Session();
+        $session->setCode($quiz->getId() . $lastThreeDigits);
+        $session->setDateStart(new \DateTimeImmutable());
+        $session->setQuiz($quiz);
+
+        $this->sessionRepository->add($session, true);
 
         return $this->render('quiz/show.html.twig', [
             'quiz' => $quiz,
             'questions' => $questions,
-            'quizId' => $id,
+            'quizId' => $quiz->getId(),
             'lastThreeDigits' => $lastThreeDigits,
         ]);
     }
