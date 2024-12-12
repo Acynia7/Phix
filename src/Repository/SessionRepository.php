@@ -24,6 +24,15 @@ class SessionRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findOneByCode(int $code): ?Session
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.code = :code')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
  
     //    /**
     //     * @return Session[] Returns an array of Session objects

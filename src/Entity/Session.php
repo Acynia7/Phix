@@ -2,10 +2,15 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\SessionRepository;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
+#[ApiResource]
 
 #[ORM\Entity(repositoryClass: SessionRepository::class)]
 
@@ -16,7 +21,8 @@ class Session
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(unique: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     private ?int $code = null;
 
     #[ORM\Column]
