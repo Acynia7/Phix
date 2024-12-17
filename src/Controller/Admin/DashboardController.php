@@ -22,21 +22,22 @@ class DashboardController extends AbstractDashboardController
         $url = $routeBuilder->setController(QuizCrudController::class)->generateUrl();
 
         return $this->redirect($url);
-
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('App');
+            ->setTitle('Admin Dashboard');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'homepage');
-        yield MenuItem::linkToCrud('Quiz', 'fas fa-map-marker-alt', Quiz::class);
-        yield MenuItem::linkToCrud('QuizState', 'fas fa-comments', QuizState::class);
-        yield MenuItem::linkToCrud('SessionState', 'fas fa-comments', SessionState::class);
-        yield MenuItem::linkToCrud('Users', 'fas fa-comments', User::class);
+        return [
+            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+            MenuItem::linkToCrud('Quizzes', 'fa fa-question', Quiz::class),
+            MenuItem::linkToCrud('Quiz States', 'fa fa-check', QuizState::class),
+            MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+            MenuItem::linkToCrud('Session States', 'fa fa-clock', SessionState::class),
+        ];
     }
 }
