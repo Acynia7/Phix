@@ -28,7 +28,7 @@ class Session
     #[ORM\Column]
     private ?\DateTimeImmutable $date_start = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $date_end = null;
 
 

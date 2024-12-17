@@ -20,7 +20,7 @@ final class Version20241217102429 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE session CHANGE date_end date_end DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\'');
+        $this->addSql('ALTER TABLE session CHANGE date_end date_end DATETIME DEFAULT NULL');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D044D5D477153098 ON session (code)');
     }
 
@@ -28,6 +28,6 @@ final class Version20241217102429 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP INDEX UNIQ_D044D5D477153098 ON session');
-        $this->addSql('ALTER TABLE session CHANGE date_end date_end DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\'');
+        $this->addSql('ALTER TABLE session CHANGE date_end date_end DATETIME NOT NULL');
     }
 }

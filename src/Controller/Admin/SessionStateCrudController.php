@@ -31,14 +31,14 @@ class SessionStateCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('sessions'))
+            ->add(EntityFilter::new('session'))
         ;
     }
 
 
     public function configureFields(string $pageName): iterable
     {
-        yield AssociationField::new('sessions');
+        yield AssociationField::new('session');
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('state');
     }
