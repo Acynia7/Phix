@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SessionState{% endblock %}
+
+{% block body %}
+    <h1>Edit SessionState</h1>
+
+    {{ include('session_state/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_session_state_index') }}">back to list</a>
+
+    {{ include('session_state/_delete_form.html.twig') }}
+{% endblock %}
