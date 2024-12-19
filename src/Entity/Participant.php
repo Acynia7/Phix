@@ -15,7 +15,7 @@ class Participant
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $score = null;
 
     #[ORM\Column]
@@ -36,9 +36,11 @@ class Participant
     #[ORM\ManyToMany(targetEntity: Session::class, inversedBy: 'participants')]
     private Collection $session;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    #[ORM\Column(length: 255)]
+    private ?string $pseudo = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $avatar = null;
 
     public function __construct()
     {
@@ -141,14 +143,26 @@ class Participant
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getPseudo(): ?string
     {
-        return $this->user;
+        return $this->pseudo;
     }
 
-    public function setUser(User $user): static
+    public function setPseudo(string $pseudo): static
     {
-        $this->user = $user;
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): static
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
